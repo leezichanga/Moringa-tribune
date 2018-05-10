@@ -27,7 +27,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8-q%ogp552=1a&vwwm7*tltr8nwwul5ge-aoo#%v__y&dla0t$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
+
+ # config('DEBUG', default=False, cast=bool)
+
 
 # ALLOWED_HOSTS = [‘*‘]
 ALLOWED_HOSTS = ['*']
@@ -37,6 +40,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     # 'news',
+    'tinymce',
     'news.apps.NewsConfig',
     'bootstrap3',
     'django.contrib.admin',
@@ -142,3 +146,10 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Email configurations remember to install python-decouple
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
